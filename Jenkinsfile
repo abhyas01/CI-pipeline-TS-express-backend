@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'node:20-bullseye'
+      args '-u root:root'
+    }
+  }
 
   environment {
     CI = 'true'
