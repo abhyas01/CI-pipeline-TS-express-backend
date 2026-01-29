@@ -23,7 +23,7 @@ app.post("/api/v1/sum", (req: Request, res: Response) => {
     });
   }
 
-  res.status(200).json({ sum: a + b });
+  res.status(200).json({ sum: a - b });
 });
 
 export { app };
