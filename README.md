@@ -1,4 +1,4 @@
-# TypeScript Express CI
+# TypeScript Express app for CI
 
 ## API Endpoints
 
