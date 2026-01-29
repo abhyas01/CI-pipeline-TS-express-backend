@@ -1,6 +1,8 @@
 import express from "express";
 import type { Request, Response } from "express";
 
+const unused = 123;
+
 const app = express();
 
 app.use(express.json());
