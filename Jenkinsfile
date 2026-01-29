@@ -68,7 +68,15 @@ pipeline {
 
   post {
     failure {
-      echo 'Pipeline failed.'
+      echo '''
+        Pipeline failed.
+        Fix Locally with:
+        - Install: npm ci
+        - Lint: npm run lint
+        - Format: npm run format
+        - Tests + coverage: npm run test:ci
+        - Build: npm run build
+      '''
     }
   }
 }
