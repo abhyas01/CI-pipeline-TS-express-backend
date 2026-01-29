@@ -3,8 +3,6 @@ import type { Request, Response } from "express";
 
 const app = express();
 
-const unused = 123;
-
 app.use(express.json());
 
 app.get("/health", (_req: Request, res: Response) => {
