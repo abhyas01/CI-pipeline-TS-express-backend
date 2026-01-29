@@ -1,8 +1,6 @@
 import express from "express";
 import type { Request, Response } from "express";
 
-const unused = 123;
-
 const app = express();
 
 app.use(express.json());
@@ -25,7 +23,7 @@ app.post("/api/v1/sum", (req: Request, res: Response) => {
     });
   }
 
-  res.status(200).json({ sum: a - b });
+  res.status(200).json({ sum: a + b });
 });
 
 export { app };
