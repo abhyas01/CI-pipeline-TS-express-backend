@@ -1,8 +1,9 @@
 pipeline {
-  agent any
-
-  tools {
-    nodejs 'node-20'
+  agent {
+    docker {
+      image 'node:20-bullseye'
+      args '-u root:root'
+    }
   }
 
   environment {
