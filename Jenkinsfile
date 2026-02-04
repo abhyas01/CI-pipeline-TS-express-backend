@@ -1,8 +1,15 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'node:20-bullseye'
+      args '-u root:root'
+    }
+  }
 
-  tools {
-    nodejs 'node-20'
+  // Stop auto-checking from Jenkins to checkout SCM before
+  // As git is not installed inside node:20-bullseye docker container
+  options {
+    skipDefaultCheckout(true)
   }
 
   environment {
@@ -13,6 +20,16 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        // install git inside the container before checkout
+        sh 'apt-get update -y'
+        sh 'apt-get install -y git ca-certificates'
+
+        // sanity checks
+        sh 'git --version'
+        sh 'node -v'
+        sh 'npm -v'
+
+        // checkout - because git exists
         checkout scm
       }
       post {
